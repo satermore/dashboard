@@ -1,0 +1,279 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align content to top to remove space above */
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a, #121212);
+    color: #e0e0e0;
+    overflow-y: auto;
+    margin: 0; /* Explicitly remove default browser margin */
+}
+
+.container {
+    padding: 0 2rem 2rem; /* No top padding to keep content at top */
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* Base gap for sections */
+    min-width: 0; /* Prevents flex items from overflowing */
+    width: 100%; /* Full width of the page */
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding-top: 0; /* Ensure no extra space above h1 */
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0; /* Remove gap between h1 and clock */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#clock {
+    font-size: 2.8rem; /* Larger clock */
+    font-weight: 300;
+    color: #b0b0b0;
+    margin-bottom: 0.5rem; /* Reduced to keep date close */
+}
+
+#date {
+    font-size: 1.2rem; /* Smaller than clock */
+    font-weight: 300;
+    color: #b0b0b0; /* Match clock color */
+    margin-bottom: 1rem;
+}
+
+#weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #a0a0a0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+#weather img {
+    width: 32px;
+    height: 32px;
+}
+
+#weather .daily {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    justify-content: center; /* Center the grid items */
+    width: 100%;
+    padding: 0.5rem;
+    overflow-x: auto; /* Allows horizontal scrolling if needed */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #a0a0a0 rgba(255, 255, 255, 0.1); /* Custom scrollbar */
+}
+
+#weather .daily::-webkit-scrollbar {
+    height: 8px; /* For WebKit browsers */
+}
+
+#weather .daily::-webkit-scrollbar-thumb {
+    background: #a0a0a0;
+    border-radius: 4px;
+}
+
+#weather .daily::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#weather .day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px; /* Minimum width for each day */
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#weather .day:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+#weather .day h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+#weather .day img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0.5rem;
+}
+
+#weather .day p {
+    font-size: 0.9rem;
+    color: #e0e0e0;
+    text-align: center;
+    margin: 0.2rem 0;
+}
+
+/* Bookmarks */
+.bookmarks {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(80px, 1fr));
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.5rem; /* Added space below bookmarks */
+    min-width: 0; /* Prevents grid overflow */
+}
+
+.bookmark {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #e0e0e0;
+    padding: 0.2rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    min-width: 0; /* Prevents flex child overflow */
+}
+
+.bookmark img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 0.1rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.bookmark span {
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    min-width: 0; /* Prevents text overflow */
+}
+
+.bookmark:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    color: #1e90ff;
+}
+
+.bookmark:hover img {
+    transform: scale(1.1);
+}
+
+/* Notes */
+.notes {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    flex-grow: 1;
+    min-width: 0; /* Prevents flex item overflow */
+}
+
+.notes h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #b0b0b0; /* Match clock color */
+    font-family: 'Inter', sans-serif; /* Explicitly set font */
+    text-align: center; /* Center the text */
+}
+
+#notes {
+    width: 100%;
+    min-height: 150px;
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    color: #e0e0e0;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    resize: vertical;
+    transition: background 0.3s ease;
+}
+
+#notes:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    #clock {
+        font-size: 2.4rem; /* Slightly smaller for mobile, still larger */
+    }
+
+    #date {
+        font-size: 1rem; /* Smaller for mobile */
+    }
+
+    .bookmarks {
+        grid-template-columns: repeat(5, minmax(70px, 1fr));
+    }
+
+    .bookmark img {
+        width: 36px;
+        height: 36px;
+    }
+
+    .bookmark span {
+        font-size: 0.7rem;
+    }
+
+    #weather .daily {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Adjust for smaller screens */
+        justify-content: center;
+        overflow-x: auto; /* Ensure scrolling */
+    }
+
+    #weather .day {
+        min-width: 80px; /* Slightly smaller for mobile */
+    }
+
+    #weather .day img {
+        width: 32px;
+        height: 32px;
+    }
+
+    #weather .day h4 {
+        font-size: 0.9rem;
+    }
+
+    #weather .day p {
+        font-size: 0.8rem;
+    }
+}
